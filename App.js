@@ -1,23 +1,17 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+// @flow
 
-export default class App extends React.Component {
+import React, { Component } from "react";
+import { Provider } from "react-redux";
+
+import Navigator from "./src/features/Navigator/navigator";
+import dataStore from "./src/lib/storeConfig";
+
+export default class App extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
+      <Provider store={dataStore}>
+        <Navigator />
+      </Provider>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

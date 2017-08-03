@@ -25,7 +25,7 @@
     "no-console": 1,                      // disallow use of console
     "no-constant-condition": 1,           // disallow use of constant expressions in conditions
     "comma-dangle": [                     // disallow trailing commas in object and array literals
-      1, "never",                // disallow control characters in regular expressions
+      1, "never"],                // disallow control characters in regular expressions
     "no-debugger": 1,                     // disallow use of debugger
     "no-dupe-keys": 1,                    // disallow duplicate keys when creating object literals
     "no-dupe-args": 1,                    // disallow duplicate arguments in functions
@@ -193,7 +193,7 @@
 
     // ECMAScript 6/7 (2015 and above)
 
-    "arrow-parens": 1,                    // require parens in arrow function arguments
+    "arrow-parens": 0,                    // require parens in arrow function arguments
     "arrow-spacing": 1,                   // require space before/after arrow function's arrow (fixable)
     "constructor-super": 1,               // verify calls of super() in constructors
     "generator-star-spacing": 0,          // enforce spacing around the * in generator functions (fixable)
@@ -223,7 +223,6 @@
     "max-statements": 0,                  // specify the maximum number of statement allowed in a function
     "no-bitwise": 0,                      // disallow use of bitwise operators
     "no-plusplus": 0                      // disallow use of unary operators, ++ and --
-
   }
 }
 

@@ -14,9 +14,9 @@
   ],
   "rules": {
     // flowtype rules
-    "flowtype/delimiter-dangle": [1, "always-multiline"],
+    "flowtype/delimiter-dangle": [1, "never"],
     "flowtype/no-dupe-keys": 2,
-    "flowtype/object-type-delimiter": [1, "semicolon"],
+    "flowtype/object-type-delimiter": [1, "comma"],
     // "flowtype/require-valid-file-annotation": [1, "always"],
     "flowtype/semi": 1,
     "flowtype/type-id-match": [1, "^[A-Z]"],

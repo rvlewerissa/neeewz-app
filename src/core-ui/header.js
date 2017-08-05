@@ -2,33 +2,30 @@
 
 import React from "react";
 import { Header } from "react-native-elements";
+import { WHITE, ORANGE } from "../constants/color";
 
 type Props = {
   text: string,
   leftIcon?: string,
-  rightIcon?: string
+  onPress?: () => void
 };
 
-const BACKGROUND_COLOR = "rgb(255, 161, 19)";
-const TEXT_COLOR = "#fff";
-
 export default function header(props: Props) {
-  let { leftIcon, rightIcon, text } = props;
+  let { leftIcon, text, onPress } = props;
   let centerIcon = {
     text,
-    style: { color: TEXT_COLOR }
+    style: { color: WHITE }
   };
 
   return (
     <Header
-      leftComponent={getIcon(leftIcon)}
+      leftComponent={getIcon(leftIcon, onPress)}
       centerComponent={centerIcon}
-      rightComponent={getIcon(rightIcon)}
-      outerContainerStyles={{ backgroundColor: BACKGROUND_COLOR }}
+      outerContainerStyles={{ backgroundColor: ORANGE }}
     />
   );
 }
 
-function getIcon(icon?: string) {
-  return icon ? { icon, color: TEXT_COLOR } : null;
+function getIcon(icon?: string, onPress?: () => void) {
+  return icon ? { icon, color: WHITE, onPress } : null;
 }

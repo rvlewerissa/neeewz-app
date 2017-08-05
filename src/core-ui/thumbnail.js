@@ -1,17 +1,20 @@
 // @flow
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 
-type BoxProps = {
+type ThumbnailProps = {
   text: string,
-  image: number
+  image: number,
+  onPress?: () => void
 };
 
-export default function Box(props: BoxProps) {
-  let { text, image } = props;
+export default function Thumbnail(props: ThumbnailProps) {
+  let { text, image, onPress } = props;
   return (
     <View style={styles.imageWrapper}>
-      <Image source={image} resizeMethod="resize" style={styles.image} />
+      <TouchableOpacity onPress={onPress}>
+        <Image source={image} resizeMethod="resize" style={styles.image} />
+      </TouchableOpacity>
       <Text style={styles.title}>
         {text}
       </Text>

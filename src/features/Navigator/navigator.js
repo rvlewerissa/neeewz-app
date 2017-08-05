@@ -20,8 +20,11 @@ function Navigator(props) {
   );
 }
 
-let mapDataToProps = state => ({
-  nav: state.nav
-});
+let mapDataToProps = state => {
+  console.log(state);
+  return {
+    nav: state.nav
+  };
+};
 
 export default connect(mapDataToProps)(Navigator);

@@ -2,54 +2,47 @@
 
 import React from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
-import Header from "../../core-ui/header";
-import Thumbnail from "../../core-ui/thumbnail";
+import Header from "../../core-ui/Header";
+import Thumbnail from "../../core-ui/Thumbnail";
 
-import bbcSport from "../../assets/bbc-sport.png";
-import cnbc from "../../assets/cnbc.png";
-import dailymail from "../../assets/daily-mail.png";
-import espn from "../../assets/espn.png";
-import huffingtonpost from "../../assets/huffington-post.png";
-import mashable from "../../assets/mashable.png";
-import talksport from "../../assets/talksport.png";
-import economist from "../../assets/the-economist.png";
-import time from "../../assets/time.png";
+import type { RouteNames } from "../../types/actions";
+import type { NewsSources } from "../../types/news";
 
-export default function Dashboard(prop) {
-  console.log(prop);
+type Props = {
+  navigateTo: (routeName: RouteNames) => void,
+  newsSource: NewsSources
+};
+
+export default function Dashboard(props: Props) {
+  let { navigateTo, newsSource } = props;
   return (
     <ScrollView style={styles.root}>
+      <Header text="Dashboard" leftIcon="menu" />
       <View style={styles.row}>
-        <Thumbnail text="BBC Sport" image={bbcSport} />
-        <Thumbnail text="CNBC" image={cnbc} />
-        <Thumbnail text="Dailymail" image={dailymail} />
-        <Thumbnail text="ESPN" image={espn} />
-        <Thumbnail text="Mashable" image={mashable} />
-        <Thumbnail text="Huffington Post" image={huffingtonpost} />
-        <Thumbnail text="Talksport" image={talksport} />
-        <Thumbnail text="Economist" image={economist} />
-        <Thumbnail text="Time" image={time} />
+        {newsSource.map((news, i) =>
+          <News {...news} navigateTo={navigateTo} key={i} />
+        )}
       </View>
     </ScrollView>
   );
 }
 
-Dashboard.navigationOptions = () => {
-  return {
-    header: <Header text="Dashboard" leftIcon="menu" />
-  };
-};
+function News({ title, image, source, navigateTo }) {
+  return (
+    <Thumbnail text={title} image={image} onPress={() => navigateTo(source)} />
+  );
+}
 
 let styles = StyleSheet.create({
   root: {
     flex: 1,
-    paddingTop: 70,
     backgroundColor: "white"
   },
   row: {
     flexDirection: "row",
     flexWrap: "wrap",
     paddingHorizontal: 5,
-    justifyContent: "center"
+    justifyContent: "center",
+    paddingTop: 70
   }
 });

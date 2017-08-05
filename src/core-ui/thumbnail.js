@@ -1,6 +1,13 @@
 // @flow
 import React from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  Platform
+} from "react-native";
 
 type ThumbnailProps = {
   text: string,
@@ -34,7 +41,8 @@ let styles = StyleSheet.create({
     borderRadius: 4
   },
   title: {
-    fontFamily: "sans-serif-medium",
+    fontFamily:
+      Platform.OS === "android" ? "sans-serif-medium" : "Helvetica Neue",
     marginTop: 5,
     textAlign: "center",
     fontWeight: "300"

@@ -4,8 +4,8 @@ export type Dispatch = (action: Action) => void;
 
 type Action = {
   type: NavigationActions,
-  routeName: RouteNames
-  params?: {[key: string]: string}
+  routeName: RouteNames,
+  params?: { [key: string]: string }
 };
 
 export type RouteNames = "NewsList" | "Dashboard";

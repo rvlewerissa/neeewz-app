@@ -21,7 +21,6 @@ function Navigator(props) {
 }
 
 let mapDataToProps = state => {
-  console.log(state);
   return {
     nav: state.nav
   };

@@ -2,6 +2,7 @@
 
 import Dashboard from "../features/Dashboard/container";
 import NewsList from "../features/NewsList/container";
+import NewsPage from "../features/NewsPage/container";
 
 export let routeConfig = {
   Dashboard: {
@@ -9,6 +10,9 @@ export let routeConfig = {
   },
   NewsList: {
     screen: NewsList
+  },
+  NewsPage: {
+    screen: NewsPage
   }
 };
 

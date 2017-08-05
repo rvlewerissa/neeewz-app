@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 
 import { API_KEY } from "../../constants/APIKey";
 import NewsList from "./newslist";
-import { BACK } from "../../constants/navigateActions";
+import { BACK, NAVIGATE } from "../../constants/navigateActions";
 
 let mapStateToProps = state => {
   let routes = state.nav.routes;
@@ -19,6 +19,13 @@ let mapDispatchToProps = dispatch => {
   return {
     navigateBack() {
       dispatch({ type: BACK });
+    },
+    navigateTo(newsURI: string, newsTitle: string) {
+      dispatch({
+        type: NAVIGATE,
+        routeName: "NewsPage",
+        params: { newsURI, newsTitle }
+      });
     }
   };
 };

@@ -1,6 +1,6 @@
 // @flow
 
-import React from "react";
+import React, { Component } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 import { List, ListItem } from "react-native-elements";
 
@@ -18,34 +18,44 @@ type Props = {
   data: ?{
     articles: Articles
   },
-  navigateBack: () => void
+  navigateBack: () => void,
+  navigateTo: (newsURI: string, newsTitle: string) => void
 };
 
-export default function NewsList(props: Props) {
-  let { data, navigateBack } = props;
-  let news = data && data.articles;
-  return (
-    <ScrollView style={styles.root}>
-      <Header text="News List" leftIcon="arrow-back" onPress={navigateBack} />
-      <View style={styles.contentWrapper}>
-        <List>
-          {news ? renderNews(news) : <LoadingIndicator />}
-        </List>
-      </View>
-    </ScrollView>
-  );
-}
+export default class NewsList extends Component {
+  props: Props;
+  constructor() {
+    super(...arguments);
+  }
 
-function renderNews(articles: Array<Object>) {
-  return articles.map((article, i) =>
-    <ListItem
-      roundAvatar
-      avatar={{ uri: article.urlToImage }}
-      key={i}
-      title={article.title}
-      subtitle={article.description}
-    />
-  );
+  render() {
+    let { data, navigateBack } = this.props;
+    let news = data && data.articles;
+    return (
+      <ScrollView style={styles.root}>
+        <Header text="News List" leftIcon="arrow-back" onPress={navigateBack} />
+        <View style={styles.contentWrapper}>
+          <List>
+            {news ? this._renderNews(news) : <LoadingIndicator />}
+          </List>
+        </View>
+      </ScrollView>
+    );
+  }
+
+  _renderNews(articles: Array<Object>) {
+    let { navigateTo } = this.props;
+    return articles.map(({ title, description, url, urlToImage }, i) =>
+      <ListItem
+        roundAvatar
+        avatar={{ uri: urlToImage }}
+        key={i}
+        title={title}
+        subtitle={description}
+        onPress={() => navigateTo(url, title)}
+      />
+    );
+  }
 }
 
 let styles = StyleSheet.create({

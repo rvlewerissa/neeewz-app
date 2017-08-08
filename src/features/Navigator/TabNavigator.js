@@ -1,32 +1,18 @@
 // @flow
 import React from "react";
 import { connect } from "react-redux";
-import { View, Text } from "react-native";
 import { TabNavigator, addNavigationHelpers } from "react-navigation";
-import { Icon } from "react-native-elements";
 
 import type { Dispatch } from "../../types/actions";
 
 import DashboardNavigator from "./DashboardNavigator";
-
-type TabBarProps = {
-  focused: boolean,
-  tintColor: string
-};
 
 export let TabNav = TabNavigator(
   {
     HomeTab: {
       screen: DashboardNavigator,
       navigationOptions: {
-        tabBarLabel: "Dashboard",
-        tabBarIcon: function TabBarIcon({ focused, tintColor }: TabBarProps) {
-          return (
-            <View style={{ backgroundColor: "red" }}>
-              <Text>Dashboard</Text>
-            </View>
-          );
-        }
+        tabBarLabel: "Dashboard"
       }
     }
   },

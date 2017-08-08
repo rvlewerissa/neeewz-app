@@ -9,7 +9,7 @@ import NewsList from "./newslist";
 import { BACK, NAVIGATE } from "../../constants/navigateActions";
 
 let mapStateToProps = state => {
-  let routes = state.nav.routes;
+  let routes = state.dashboardNavigation.routes;
   let route = routes[routes.length - 1];
   let params = route.params || {};
   return { source: params.source };

@@ -17,7 +17,7 @@ export default function Dashboard(props: Props) {
   let { navigateTo, newsSource } = props;
   return (
     <ScrollView style={styles.root}>
-      <Header text="Hello" />
+      <Header text="Dashboard" />
       <View style={styles.row}>
         {newsSource.map((news, i) =>
           <News {...news} navigateTo={navigateTo} key={i} />

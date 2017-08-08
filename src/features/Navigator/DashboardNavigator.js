@@ -36,7 +36,6 @@ type Props = {
 // Component to pass navigation props to router
 function Wrapper(props: Props) {
   let { dispatch, routeState } = props;
-  console.log(dispatch.toString());
   return (
     <DashboardNav
       navigation={addNavigationHelpers({

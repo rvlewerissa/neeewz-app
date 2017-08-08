@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import autobind from "class-autobind";
 import { Header, SearchBar, Icon } from "react-native-elements";
-import { WHITE, ORANGE } from "../constants/color";
+import { WHITE, JAGGER } from "../constants/color";
 
 type Props = {
   text: string,
@@ -19,6 +19,7 @@ type State = {
 export default class TopBar extends Component {
   state: State;
   props: Props;
+
   constructor() {
     super(...arguments);
     autobind(this);
@@ -26,6 +27,7 @@ export default class TopBar extends Component {
       showSearchBar: false
     };
   }
+
   render() {
     let { leftIcon, onPress } = this.props;
     return (
@@ -33,7 +35,7 @@ export default class TopBar extends Component {
         leftComponent={getIcon(leftIcon, onPress)}
         centerComponent={this._getCenterComponent()}
         rightComponent={this._getRightComponent()}
-        outerContainerStyles={{ backgroundColor: ORANGE }}
+        outerContainerStyles={{ backgroundColor: JAGGER }}
       />
     );
   }
@@ -76,9 +78,9 @@ export default class TopBar extends Component {
           backgroundColor: WHITE
         }}
         containerStyle={{
-          backgroundColor: ORANGE,
-          borderBottomColor: ORANGE,
-          borderTopColor: ORANGE,
+          backgroundColor: JAGGER,
+          borderBottomColor: JAGGER,
+          borderTopColor: JAGGER,
           width: 250
         }}
       />
@@ -86,7 +88,8 @@ export default class TopBar extends Component {
   }
 
   _onChangeText(text: string) {
-    this.props.onChangeText(text);
+    let { onChangeText } = this.props;
+    onChangeText && onChangeText(text);
   }
 }
 

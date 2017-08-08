@@ -6,7 +6,7 @@ import Header from "../../core-ui/Header";
 import Thumbnail from "../../core-ui/Thumbnail";
 
 import type { RouteNames } from "../../types/actions";
-import type { NewsSources } from "../../types/news";
+import type { NewsSources, NewsSource } from "../../types/news";
 
 type Props = {
   navigateTo: (routeName: RouteNames) => void,
@@ -27,7 +27,9 @@ export default function Dashboard(props: Props) {
   );
 }
 
-function News({ title, image, source, navigateTo }) {
+type NewsProp = NewsSource & { navigateTo: Function };
+
+function News({ title, image, source, navigateTo }: NewsProp) {
   return (
     <Thumbnail text={title} image={image} onPress={() => navigateTo(source)} />
   );

@@ -44,15 +44,15 @@ export default class TopBar extends Component {
     if (text !== "News List") return null;
     return !showSearchBar
       ? <Icon
-          name="search"
-          color={WHITE}
-          onPress={() => this.setState({ showSearchBar: true })}
-        />
+        name="search"
+        color={WHITE}
+        onPress={() => this.setState({ showSearchBar: true })}
+      />
       : <Icon
-          name="close"
-          color={WHITE}
-          onPress={() => this.setState({ showSearchBar: false })}
-        />;
+        name="close"
+        color={WHITE}
+        onPress={() => this.setState({ showSearchBar: false })}
+      />;
   }
 
   _getCenterComponent() {
@@ -61,9 +61,9 @@ export default class TopBar extends Component {
     return showSearchBar
       ? this._renderSearchBar()
       : {
-          text,
-          style: { color: WHITE }
-        };
+        text,
+        style: { color: WHITE }
+      };
   }
 
   _renderSearchBar() {

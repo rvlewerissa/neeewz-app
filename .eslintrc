@@ -123,7 +123,7 @@
 
     "jsx-quotes": [1, "prefer-double"],   // <Foo bar="x" /> not <Foo bar='x' />
     "react/jsx-closing-bracket-location": [
-      1
+      0
     ],
     "react/no-find-dom-node": 0,
     "react/jsx-indent": [1, 2],
@@ -225,4 +225,3 @@
     "no-plusplus": 0                      // disallow use of unary operators, ++ and --
   }
 }
-

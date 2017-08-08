@@ -1,15 +1,28 @@
 // @flow
 
-import { AppNavigator } from "./navigator";
+import { TabNav } from "./TabNavigator";
+import { DashboardNav } from "./DashboardNavigator";
 
-let initialState = AppNavigator.router.getStateForAction(
-  AppNavigator.router.getActionForPathAndParams("Dashboard")
+let initTabState = TabNav.router.getStateForAction(
+  TabNav.router.getActionForPathAndParams("HomeTab")
 );
 
-export default function navigationReducer(
-  state: Object = initialState,
+export function tabNavigationReducer(
+  state: Object = initTabState,
   action: Object
 ) {
-  let nextState = AppNavigator.router.getStateForAction(action, state);
+  let nextState = TabNav.router.getStateForAction(action, state);
+  return nextState || state;
+}
+
+let initDashboardState = DashboardNav.router.getStateForAction(
+  DashboardNav.router.getActionForPathAndParams("Dashboard")
+);
+
+export function dashboardNavigationReducer(
+  state: Object = initDashboardState,
+  action: Object
+) {
+  let nextState = DashboardNav.router.getStateForAction(action, state);
   return nextState || state;
 }

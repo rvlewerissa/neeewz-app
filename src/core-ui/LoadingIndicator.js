@@ -1,17 +1,20 @@
 // @flow
 
 import React from "react";
-import Spinner from "react-native-loading-spinner-overlay";
+import { ActivityIndicator, StyleSheet, View, Dimensions } from "react-native";
 
-import { ZERO_OPACITY } from "../constants/color";
+let { height } = Dimensions.get("window");
 
 export default function LoadingIndicator() {
   return (
-    <Spinner
-      visible
-      overlayColor={ZERO_OPACITY}
-      color="rgb(148, 113, 114)"
-      cancellable
-    />
+    <View style={styles.root}>
+      <ActivityIndicator size="large" color="#947172" />
+    </View>
   );
 }
+
+let styles = StyleSheet.create({
+  root: {
+    marginTop: height / 2 - 100
+  }
+});

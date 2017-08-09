@@ -35,7 +35,11 @@ export default class TopBar extends Component {
         leftComponent={getIcon(leftIcon, onPress)}
         centerComponent={this._getCenterComponent()}
         rightComponent={this._getRightComponent()}
-        outerContainerStyles={{ backgroundColor: JAGGER }}
+        outerContainerStyles={{
+          zIndex: 2,
+          backgroundColor: JAGGER,
+          borderBottomWidth: 0
+        }}
       />
     );
   }
@@ -64,7 +68,11 @@ export default class TopBar extends Component {
       ? this._renderSearchBar()
       : {
         text,
-        style: { color: WHITE }
+        style: {
+          color: WHITE,
+          paddingHorizontal: 10,
+          paddingBottom: 3
+        }
       };
   }
 

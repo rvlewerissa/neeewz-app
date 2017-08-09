@@ -1,43 +1,62 @@
 // @flow
 
-import React from "react";
-import { FlatList, View, Text, StyleSheet, Image } from "react-native";
+import React, { Component } from "react";
+import {
+  FlatList,
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity
+} from "react-native";
+import autobind from "class-autobind";
 
 import type { Article } from "../types/news";
 
 type Props = {
   data: Array<Article>,
-  onPress?: (url: string, title: string) => void
+  onPress: (url: string, title: string) => void
 };
 
-export default function ListView(props: Props) {
-  return <FlatList data={props.data} renderItem={renderItem} />;
-}
+export default class ListView extends Component {
+  props: Props;
 
-function renderItem({ item }: { item: Article }) {
-  let { title, description, urlToImage } = item;
-  return (
-    <View style={styles.item}>
-      <View style={styles.contentWrapper}>
-        <View style={styles.left}>
-          <Text style={styles.title} numberOfLines={1}>
-            {title}
-          </Text>
-          <Text style={styles.description} numberOfLines={2}>
-            {description}
-          </Text>
+  constructor() {
+    super(...arguments);
+    autobind(this);
+  }
+
+  render() {
+    let { data } = this.props;
+    return <FlatList data={data} renderItem={this._renderItem} />;
+  }
+
+  _renderItem({ item }: { item: Article }) {
+    let { title, description, urlToImage, url } = item;
+    let { onPress } = this.props;
+    return (
+      <TouchableOpacity style={styles.item} onPress={() => onPress(url, title)}>
+        <View style={styles.contentWrapper}>
+          <View style={styles.left}>
+            <Text style={styles.title} numberOfLines={1}>
+              {title}
+            </Text>
+            <Text style={styles.description} numberOfLines={2}>
+              {description}
+            </Text>
+          </View>
+          <View style={styles.right}>
+            <Image
+              source={{ uri: urlToImage }}
+              resizeMethod="resize"
+              style={styles.image}
+            />
+          </View>
         </View>
-        <View style={styles.right}>
-          <Image
-            source={{ uri: urlToImage }}
-            resizeMethod="resize"
-            style={styles.image}
-          />
-        </View>
-      </View>
-      <Text style={styles.link}>FULL ARTICLE ></Text>
-    </View>
-  );
+        <Text style={styles.link}>FULL ARTICLE ></Text>
+      </TouchableOpacity>
+    );
+  }
 }
 
 let styles = StyleSheet.create({
@@ -70,7 +89,7 @@ let styles = StyleSheet.create({
   link: {
     fontSize: 12,
     textAlign: "right",
-    color: "#DDDEE4",
+    color: "rgb(213, 215, 218)",
     fontWeight: "500",
     marginTop: 5
   }

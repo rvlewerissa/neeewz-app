@@ -4,20 +4,20 @@ import { connect } from "react-redux";
 
 import { BACK } from "../../constants/navigateActions";
 import NewsPage from "./newspage";
+import { getNewsMeta } from "../../helpers/helpers";
 
-function mapStateToProps(state) {
-  let { dashboardNavigation } = state;
-  let routes = dashboardNavigation.routes;
-  let route = routes[routes.length - 1];
-  let newsURI = route.params.newsURI;
-  let newsTitle = route.params.newsTitle;
+import type { State } from "../../types/state";
+import type { Dispatch } from "../../types/actions";
+
+function mapStateToProps(state: State) {
+  let { newsURI, newsTitle } = getNewsMeta(state);
   return {
     newsURI,
     newsTitle
   };
 }
 
-let mapDispatchToProps = dispatch => {
+let mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     navigateBack() {
       dispatch({ type: BACK });

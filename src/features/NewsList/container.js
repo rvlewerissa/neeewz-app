@@ -8,14 +8,17 @@ import { API_KEY } from "../../constants/APIKey";
 import NewsList from "./newslist";
 import { BACK, NAVIGATE } from "../../constants/navigateActions";
 
-let mapStateToProps = state => {
+import type { Dispatch } from "../../types/actions";
+import type { State } from "../../types/state";
+
+let mapStateToProps = (state: State) => {
   let routes = state.dashboardNavigation.routes;
   let route = routes[routes.length - 1];
   let params = route.params || {};
   return { source: params.source };
 };
 
-let mapDispatchToProps = dispatch => {
+let mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     navigateBack() {
       dispatch({ type: BACK });

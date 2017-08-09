@@ -7,7 +7,6 @@ import { Icon } from "react-native-elements";
 import Header from "../../core-ui/Header";
 import ListView from "../../core-ui/ListView";
 import LoadingIndicator from "../../core-ui/LoadingIndicator";
-import { WHITE } from "../../constants/color";
 
 import type { Article } from "../../types/news";
 
@@ -36,28 +35,34 @@ export default class NewsList extends Component {
   }
 
   render() {
-    let { data, navigateBack, navigateTo, source } = this.props;
-    let news = data && data.articles;
-    let heading =
-      (source && source.toUpperCase().split("-").join(" ")) || "NewsList";
+    let { navigateBack } = this.props;
+    let heading = this._getHeading();
     return (
-      <ScrollView style={styles.root}>
+      <View style={styles.root}>
         <Header
           text={heading}
           leftIcon="arrow-back"
           onPress={navigateBack}
           onChangeText={this._onChangeText}
         />
+        {this._renderNews()}
+      </View>
+    );
+  }
+
+  _renderNews() {
+    let { data, navigateTo } = this.props;
+    let news = data && data.articles;
+    return (
+      <ScrollView style={styles.root}>
         <View style={styles.contentWrapper}>
           <View style={styles.headingWrapper}>
             <Icon name="trending-up" color="rgb(224, 224, 224)" />
             <Text style={styles.heading}>TRENDING</Text>
           </View>
-          <View>
-            {news
-              ? <ListView data={this._filterNews(news)} onPress={navigateTo} />
-              : <LoadingIndicator />}
-          </View>
+          {news
+            ? <ListView data={this._filterNews(news)} onPress={navigateTo} />
+            : <LoadingIndicator />}
         </View>
       </ScrollView>
     );
@@ -67,6 +72,11 @@ export default class NewsList extends Component {
     return articles.filter(({ title }) =>
       title.toLowerCase().includes(this.state.searchNews)
     );
+  }
+
+  _getHeading() {
+    let { source } = this.props;
+    return (source && source.toUpperCase().split("-").join(" ")) || "NewsList";
   }
 
   _onChangeText(text: string) {
@@ -79,17 +89,18 @@ let styles = StyleSheet.create({
     flex: 1
   },
   headingWrapper: {
-    backgroundColor: "white",
-    borderBottomColor: "rgb(224, 224, 224)",
-    borderBottomWidth: 0.5,
-    alignItems: "center",
     flexDirection: "row",
-    padding: 10
+    alignItems: "center",
+    padding: 10,
+    borderBottomWidth: 0.5,
+    backgroundColor: "#F7F7F8",
+    borderBottomColor: "rgb(224, 224, 224)"
   },
   heading: {
-    color: "#A9A8AB",
-    fontWeight: "500",
-    marginLeft: 5
+    marginLeft: 10,
+    marginBottom: 2,
+    color: "#433B47",
+    fontWeight: "500"
   },
   contentWrapper: {
     paddingTop: 70

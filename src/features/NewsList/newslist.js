@@ -29,9 +29,6 @@ export default class NewsList extends Component {
 
   constructor() {
     super(...arguments);
-    this.state = {
-      searchNews: ""
-    };
   }
 
   render() {
@@ -39,12 +36,7 @@ export default class NewsList extends Component {
     let heading = this._getHeading();
     return (
       <View style={styles.root}>
-        <Header
-          text={heading}
-          leftIcon="arrow-back"
-          onPress={navigateBack}
-          onChangeText={this._onChangeText}
-        />
+        <Header text={heading} icon="arrow-back" onPress={navigateBack} />
         {this._renderNews()}
       </View>
     );
@@ -77,10 +69,6 @@ export default class NewsList extends Component {
   _getHeading() {
     let { source } = this.props;
     return (source && source.toUpperCase().split("-").join(" ")) || "NewsList";
-  }
-
-  _onChangeText(text: string) {
-    this.setState({ searchNews: text });
   }
 }
 

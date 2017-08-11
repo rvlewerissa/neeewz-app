@@ -6,7 +6,7 @@ import { Icon } from "react-native-elements";
 
 import Header from "../../core-ui/Header";
 
-export default function Credit(props) {
+export default function Credit() {
   return (
     <View style={styles.root}>
       <Header text="Credit" />

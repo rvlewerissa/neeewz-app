@@ -14,7 +14,7 @@ import { Icon } from "react-native-elements";
 import type { Dispatch } from "../../types/actions";
 
 import DashboardNavigator from "./DashboardNavigator";
-import Credit from "../Credit/container";
+import Credit from "../Credit/Credit";
 import { BACK } from "../../constants/navigateActions";
 
 export let TabNav = TabNavigator(

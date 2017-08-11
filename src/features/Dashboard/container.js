@@ -2,7 +2,7 @@
 
 import { connect } from "react-redux";
 
-import NewsList from "./dashboard";
+import NewsList from "./Dashboard";
 import { NAVIGATE } from "../../constants/navigateActions";
 import type { Dispatch, RouteNames } from "../../types/actions";
 

@@ -19,12 +19,7 @@ type Props = {
   navigateTo: (newsURI: string, newsTitle: string) => void
 };
 
-type State = {
-  searchNews: string
-};
-
 export default class NewsList extends Component {
-  state: State;
   props: Props;
 
   constructor() {
@@ -61,9 +56,7 @@ export default class NewsList extends Component {
   }
 
   _filterNews(articles: Array<Article>) {
-    return articles.filter(({ title }) =>
-      title.toLowerCase().includes(this.state.searchNews)
-    );
+    return articles.filter(({ title }) => title.toLowerCase());
   }
 
   _getHeading() {

@@ -6,8 +6,11 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
-  Platform
+  Platform,
+  Dimensions
 } from "react-native";
+
+let { width } = Dimensions.get("window");
 
 type ThumbnailProps = {
   text: string,
@@ -36,13 +39,13 @@ let styles = StyleSheet.create({
     marginVertical: 10
   },
   image: {
-    width: 100,
-    height: 100,
+    width: width / 4,
+    height: width / 4,
     borderRadius: 4
   },
   title: {
     fontFamily:
-      Platform.OS === "android" ? "sans-serif-medium" : "Helvetica Neue",
+      Platform.OS === "android" ? "sans-serif-light" : "Helvetica Neue",
     marginTop: 5,
     textAlign: "center",
     fontWeight: "300"

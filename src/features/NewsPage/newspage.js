@@ -15,7 +15,7 @@ export default function NewsPage(props: Props) {
   let { newsURI, newsTitle, navigateBack } = props;
   return (
     <View style={styles.wrapper}>
-      <Header onPress={navigateBack} text={newsTitle} leftIcon="arrow-back" />
+      <Header onPress={navigateBack} text={newsTitle} icon="arrow-back" />
       <WebView
         source={{ uri: newsURI }}
         startInLoadingState
@@ -37,6 +37,7 @@ let styles = StyleSheet.create({
     marginTop: 50
   },
   webview: {
-    flex: 1
+    flex: 1,
+    marginTop: 70
   }
 });

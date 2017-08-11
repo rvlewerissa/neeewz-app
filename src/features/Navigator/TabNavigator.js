@@ -1,14 +1,20 @@
 // @flow
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { BackHandler } from "react-native";
+import {
+  BackHandler,
+  View,
+  StatusBar,
+  StyleSheet,
+  Platform
+} from "react-native";
 import { TabNavigator, addNavigationHelpers } from "react-navigation";
 import { Icon } from "react-native-elements";
 
 import type { Dispatch } from "../../types/actions";
 
 import DashboardNavigator from "./DashboardNavigator";
-import Settings from "../Settings/Settings";
+import Credit from "../Credit/container";
 import { BACK } from "../../constants/navigateActions";
 
 export let TabNav = TabNavigator(
@@ -16,16 +22,16 @@ export let TabNav = TabNavigator(
     HomeTab: {
       screen: DashboardNavigator,
       navigationOptions: {
-        tabBarLabel: "Dashboard",
+        tabBarLabel: "DASHBOARD",
         tabBarIcon: function TabBarIcon() {
           <Icon name="rowing" />;
         }
       }
     },
-    Settings: {
-      screen: Settings,
+    Credit: {
+      screen: Credit,
       navigationOptions: {
-        tabBarLabel: "Settings"
+        tabBarLabel: "CREDIT"
       }
     }
   },
@@ -35,17 +41,23 @@ export let TabNav = TabNavigator(
     animationEnabled: false,
     swipeEnabled: true,
     tabBarOptions: {
+      showLabel: true,
       style: {
         backgroundColor: "#F7F7F8",
         borderTopColor: "#A9A8AB",
-        borderTopWidth: 0.2
+        borderTopWidth: 0
       },
       labelStyle: {
-        color: "#433B47"
+        color: "#433B47",
+        fontSize: 12,
+        marginBottom: Platform.OS === "android" ? 5 : "2%",
+        backgroundColor: "#F7F7F8",
+        padding: Platform.OS === "android" ? 0 : "10%"
       },
       indicatorStyle: {
         backgroundColor: "#A9A8AB"
-      }
+      },
+      activeBackgroundColor: "#A9A8AB"
     }
   }
 );
@@ -69,15 +81,24 @@ class Wrapper extends Component {
   render() {
     let { dispatch, routeState } = this.props;
     return (
-      <TabNav
-        navigation={addNavigationHelpers({
-          dispatch,
-          state: routeState
-        })}
-      />
+      <View style={styles.root}>
+        <StatusBar barStyle="light-content" />
+        <TabNav
+          navigation={addNavigationHelpers({
+            dispatch,
+            state: routeState
+          })}
+        />
+      </View>
     );
   }
 }
+
+let styles = StyleSheet.create({
+  root: {
+    flex: 1
+  }
+});
 
 let mapDataToProps = state => {
   return {

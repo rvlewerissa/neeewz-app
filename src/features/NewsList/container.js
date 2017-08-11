@@ -4,8 +4,8 @@ import { compose } from "recompose";
 import fetch from "fetch-hoc";
 import { connect } from "react-redux";
 
+import NewsList from "./NewsList";
 import { API_KEY } from "../../constants/APIKey";
-import NewsList from "./newslist";
 import { BACK, NAVIGATE } from "../../constants/navigateActions";
 
 import type { Dispatch } from "../../types/actions";

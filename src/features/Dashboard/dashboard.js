@@ -16,14 +16,16 @@ type Props = {
 export default function Dashboard(props: Props) {
   let { navigateTo, newsSource } = props;
   return (
-    <ScrollView style={styles.root}>
+    <View style={styles.flexOne}>
       <Header text="Dashboard" />
-      <View style={styles.row}>
-        {newsSource.map((news, i) =>
-          <News {...news} navigateTo={navigateTo} key={i} />
-        )}
-      </View>
-    </ScrollView>
+      <ScrollView style={styles.root}>
+        <View style={styles.row}>
+          {newsSource.map((news, i) =>
+            <News {...news} navigateTo={navigateTo} key={i} />
+          )}
+        </View>
+      </ScrollView>
+    </View>
   );
 }
 
@@ -40,11 +42,14 @@ let styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white"
   },
+  flexOne: {
+    flex: 1
+  },
   row: {
     flexDirection: "row",
     flexWrap: "wrap",
-    paddingHorizontal: 5,
-    justifyContent: "center",
+    justifyContent: "space-around",
+    paddingHorizontal: "5%",
     paddingTop: 70
   }
 });

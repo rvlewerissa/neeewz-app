@@ -9,6 +9,7 @@ import {
   Image,
   TouchableOpacity
 } from "react-native";
+import { Icon } from "react-native-elements";
 import autobind from "class-autobind";
 
 import type { Article } from "../types/news";
@@ -53,7 +54,10 @@ export default class ListView extends Component {
             />
           </View>
         </View>
-        <Text style={styles.link}>FULL ARTICLE ></Text>
+        <View style={styles.linkWrapper}>
+          <Text style={styles.link}>FULL ARTICLE</Text>
+          <Icon name="keyboard-arrow-right" color="rgb(213, 215, 218)" />
+        </View>
       </TouchableOpacity>
     );
   }
@@ -86,9 +90,12 @@ let styles = StyleSheet.create({
     width: 50,
     borderRadius: 3
   },
+  linkWrapper: {
+    flexDirection: "row",
+    justifyContent: "flex-end"
+  },
   link: {
     fontSize: 12,
-    textAlign: "right",
     color: "rgb(213, 215, 218)",
     fontWeight: "500",
     marginTop: 5

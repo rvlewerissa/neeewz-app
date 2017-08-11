@@ -51,7 +51,6 @@ let styles = {
   },
   title: {
     color: WHITE,
-    paddingHorizontal: 5,
-    paddingBottom: 3
+    marginBottom: 3
   }
 };

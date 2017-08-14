@@ -2,7 +2,12 @@
 
 export type Dispatch = (action: Action) => void;
 
-type Action = {
+// prettier-ignore
+export type Action = {
+  type: "__FETCHER__FETCH_SUCCESSFUL",
+  endpoint: string,
+  payload: Object
+} | {
   type: NavigationActions,
   routeName?: RouteNames,
   params?: { [key: string]: string }

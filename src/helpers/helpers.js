@@ -11,3 +11,10 @@ export function getNewsMeta(state: State) {
   let newsTitle = params && params.newsTitle;
   return { newsURI, newsTitle };
 }
+
+export function getSource(state: State) {
+  let routes = state.dashboardNavigation.routes;
+  let route = routes[routes.length - 1];
+  let params = route.params || {};
+  return params.source;
+}

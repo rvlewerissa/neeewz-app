@@ -3,7 +3,7 @@
 import { connect } from "react-redux";
 
 import NewsList from "./Dashboard";
-import { NAVIGATE } from "../../constants/navigateActions";
+import { NAVIGATE } from "../../constants/NavigateActions";
 import type { Dispatch, RouteNames } from "../../types/actions";
 
 function mapStateToProps(state) {

@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 
 import NewsList from "./NewsList";
 import { API_KEY } from "../../constants/APIKey";
-import { BACK, NAVIGATE } from "../../constants/navigateActions";
+import { BACK, NAVIGATE } from "../../constants/NavigateActions";
 
 import type { Dispatch } from "../../types/actions";
 import type { State } from "../../types/state";

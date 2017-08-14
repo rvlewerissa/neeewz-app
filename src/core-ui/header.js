@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import autobind from "class-autobind";
 import { Header } from "react-native-elements";
-import { WHITE, JAGGER } from "../constants/color";
+import { WHITE, JAGGER } from "../constants/Color";
 
 type Props = {
   text: string,

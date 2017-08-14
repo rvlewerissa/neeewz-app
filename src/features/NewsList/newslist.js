@@ -8,6 +8,13 @@ import Header from "../../core-ui/Header";
 import ListView from "../../core-ui/ListView";
 import LoadingIndicator from "../../core-ui/LoadingIndicator";
 
+import {
+  JAGGER,
+  LIGHT_WHITE,
+  LIGHT_GREY_2,
+  LIGHT_GREY_3
+} from "../../constants/Color";
+
 import type { Article } from "../../types/news";
 
 type Props = {
@@ -44,7 +51,7 @@ export default class NewsList extends Component {
       <ScrollView style={styles.root}>
         <View style={styles.contentWrapper}>
           <View style={styles.headingWrapper}>
-            <Icon name="trending-up" color="rgb(224, 224, 224)" />
+            <Icon name="trending-up" color={LIGHT_GREY_3} />
             <Text style={styles.heading}>TRENDING</Text>
           </View>
           {news
@@ -74,13 +81,13 @@ let styles = StyleSheet.create({
     alignItems: "center",
     padding: 10,
     borderBottomWidth: 0.5,
-    backgroundColor: "#F7F7F8",
-    borderBottomColor: "rgb(224, 224, 224)"
+    backgroundColor: LIGHT_GREY_2,
+    borderBottomColor: LIGHT_WHITE
   },
   heading: {
     marginLeft: 10,
     marginBottom: 2,
-    color: "#433B47",
+    color: JAGGER,
     fontWeight: "500"
   },
   contentWrapper: {

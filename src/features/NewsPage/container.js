@@ -3,7 +3,7 @@
 import { connect } from "react-redux";
 
 import NewsPage from "./NewsPage";
-import { BACK } from "../../constants/navigateActions";
+import { BACK } from "../../constants/NavigateActions";
 import { getNewsMeta } from "../../helpers/helpers";
 
 import type { State } from "../../types/state";

@@ -12,6 +12,8 @@ import {
 import { Icon } from "react-native-elements";
 import autobind from "class-autobind";
 
+import { GREY, LIGHT_GREY, DARK, WHITE } from "../constants/Color";
+
 import type { Article } from "../types/news";
 
 type Props = {
@@ -56,7 +58,7 @@ export default class ListView extends Component {
         </View>
         <View style={styles.linkWrapper}>
           <Text style={styles.link}>FULL ARTICLE</Text>
-          <Icon name="keyboard-arrow-right" color="rgb(213, 215, 218)" />
+          <Icon name="keyboard-arrow-right" color={GREY} />
         </View>
       </TouchableOpacity>
     );
@@ -66,7 +68,7 @@ export default class ListView extends Component {
 let styles = StyleSheet.create({
   item: {
     padding: 15,
-    backgroundColor: "white"
+    backgroundColor: WHITE
   },
   contentWrapper: {
     flexDirection: "row"
@@ -79,11 +81,11 @@ let styles = StyleSheet.create({
   },
   title: {
     fontWeight: "500",
-    color: "#433B47",
+    color: DARK,
     marginBottom: 5
   },
   description: {
-    color: "#A9A8AB"
+    color: LIGHT_GREY
   },
   image: {
     height: 50,
@@ -96,7 +98,7 @@ let styles = StyleSheet.create({
   },
   link: {
     fontSize: 12,
-    color: "rgb(213, 215, 218)",
+    color: GREY,
     fontWeight: "500",
     marginTop: 5
   }

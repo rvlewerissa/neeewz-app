@@ -4,11 +4,11 @@ import React from "react";
 import { connect } from "react-redux";
 import { StackNavigator, addNavigationHelpers } from "react-navigation";
 
-import type { Dispatch } from "../../types/actions";
+import type { Dispatch } from "../../../types/actions";
 
-import Dashboard from "../Dashboard/container";
-import NewsList from "../NewsList/container";
-import NewsPage from "../NewsPage/container";
+import Dashboard from "../../Dashboard/container";
+import NewsList from "../../NewsList/container";
+import NewsPage from "../../NewsPage/container";
 
 export let DashboardNav = StackNavigator(
   {
@@ -33,7 +33,6 @@ type Props = {
   routeState: Object
 };
 
-// Component to pass navigation props to router
 function Wrapper(props: Props) {
   let { dispatch, routeState } = props;
   return (

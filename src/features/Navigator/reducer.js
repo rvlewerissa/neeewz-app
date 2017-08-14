@@ -1,7 +1,7 @@
 // @flow
 
-import { TabNav } from "./TabNavigator";
-import { DashboardNav } from "./DashboardNavigator";
+import { TabNav } from "./TabNavigator/TabNavigator";
+import { DashboardNav } from "./DashboardNavigator/DashboardNavigator";
 
 let initTabState = TabNav.router.getStateForAction(
   TabNav.router.getActionForPathAndParams("HomeTab")

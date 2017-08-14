@@ -1,8 +1,8 @@
 // @flow
 
-import type { DashboardNavigation } from "../types/state";
+import type { State } from "../types/state";
 
-export function getNewsMeta(state: DashboardNavigation) {
+export function getNewsMeta(state: State) {
   let { dashboardNavigation } = state;
   let routes = dashboardNavigation.routes;
   let route = routes[routes.length - 1];

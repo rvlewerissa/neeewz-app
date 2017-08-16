@@ -3,7 +3,7 @@
 import { connect } from "react-redux";
 
 import NewsList from "./NewsList";
-import fetchHOC from "../../core-ui/FetchHOC/FetchHOC";
+import fetchHOC from "fetch-hoc-redux";
 import { API_KEY } from "../../constants/APIKey";
 import { BACK, NAVIGATE } from "../../constants/NavigateActions";
 import { getSource } from "../../helpers/helpers";
